@@ -7,7 +7,38 @@
  */
 
 var getAllUsernames;
+function getAllUsernames(obj) {
+  let arr = [];
+  let newUser = obj.data.id;
+  for (var i in newUser) { //iterate over vars in newUsers
+    let add = newUser[i].username; //collecting usernames of each newUsers
+    arr.push(add); //add to array
+  }
+  
+  return arr;
+}
 
+
+/* #findAdmin
+ *
+ * Takes in an object and returns the username of the admin.
+ *
+ * @param {Object}
+ * @return {String}
+ */
+
+function findAdmin(obj) {
+  let newStr;
+  let findUsers = obj.data.id //nav to users
+  for (var i in findUsers ) {
+    let isAdmin = findUsers[0][1].hasOwnProperty("true")
+    if (isAdmin === true) {
+      return findUsers[0].username;
+     } else {
+        return null;
+      }
+    }
+  }
 /* #hometownCity
  *
  * Takes in an array and returns a string of the users hometown city.
@@ -16,7 +47,17 @@ var getAllUsernames;
  * @return {String}
  */
 
-var hometownCity;
+function hometownCity(arr) { 
+  let newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    console.log(i);
+    let city = arr[i][hometown];
+    newArr.push(city);
+  }
+  let newStr = newArr.join();
+  return newStr;
+  
+  }
 
 /* #usersCurrentState
  *
@@ -27,7 +68,17 @@ var hometownCity;
  * @return {Object}
  */
 
-var usersCurrentState;
+function usersCurrentState(arr1, arr2) {
+  for (var i=0; i<arr1.length; i++) {
+  let arrData = arr1[i].username; //should return username, navigate to...
+  }
+  for (var j=0;j<arr2.length; j++) {
+  let arrUsers = arr[1][2].city   
+  }      // should return current state
+  let newObj = {arrData : arrUsers};
+  return newObj
+}
+
 
 /* #findAdmin
  *
