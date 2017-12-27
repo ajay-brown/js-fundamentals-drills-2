@@ -6,7 +6,6 @@
  * @return {Array}
  */
 
-var getAllUsernames;
 function getAllUsernames(obj) {
   let arr = [];
   let newUser = obj.data.id;
@@ -18,27 +17,6 @@ function getAllUsernames(obj) {
   return arr;
 }
 
-
-/* #findAdmin
- *
- * Takes in an object and returns the username of the admin.
- *
- * @param {Object}
- * @return {String}
- */
-
-function findAdmin(obj) {
-  let newStr;
-  let findUsers = obj.data.id //nav to users
-  for (var i in findUsers ) {
-    let isAdmin = findUsers[0][1].hasOwnProperty("true")
-    if (isAdmin === true) {
-      return findUsers[0].username;
-     } else {
-        return null;
-      }
-    }
-  }
 /* #hometownCity
  *
  * Takes in an array and returns a string of the users hometown city.
@@ -49,11 +27,12 @@ function findAdmin(obj) {
 
 function hometownCity(arr) { 
   let newArr = [];
-  for (var i = 0; i < arr.length; i++) {
-    console.log(i);
-    let city = arr[i][hometown];
-    newArr.push(city);
+  let toCity = arr[citiesLived][hometown][state];
+  for (var i=0 ; i<users.length; i++) {
+    let getCity = toCity[i].city
   }
+ 
+    newArr.push(getCity)
   let newStr = newArr.join();
   return newStr;
   
@@ -88,7 +67,17 @@ function usersCurrentState(arr1, arr2) {
  * @return {String}
  */
 
-var findAdmin;
+function findAdmin(obj) {
+  let findUsers = obj.data.id //nav to users
+  for (var i in findUsers ) {
+    let isAdmin = findUsers[i]
+    if (isAdmin.hasOwnProperty('admin') && isAdmin["admin"] === "true") {
+      return isAdmin.username[i];
+     } else {
+        return null;
+      }
+    }
+  }
 
 /* #addNewMovie
  *
@@ -491,10 +480,10 @@ var getPrices;
 var addName;
 
 module.exports = {
-  getAllUsernames: null,
-  hometownCity: null,
+  getAllUsernames: getAllUsernames,
+  hometownCity: hometownCity,
   usersCurrentState: null,
-  findAdmin: null,
+  findAdmin: findAdmin,
   addNewMovie: null,
   favoriteBooks: null,
   countTracks: null,
